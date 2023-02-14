@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Test string: {{ testStringResult }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,10 +31,24 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      testStringResult: undefined
+    }
+  },
+  mounted() {
+    axios.get("https://restcountries.com/v3.1/all").then((data) => {
+      this.testStringResult = data.data[0].name.official;
+    }).catch(() => {
+      alert("Error")
+    });
   }
 }
 </script>
