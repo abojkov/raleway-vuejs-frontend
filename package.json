@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "serve prod": "vue-cli-service serve --mode production",
-    "build": "vue-cli-service build",
+    "serve dev": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "serve prod": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve --mode production --omit=dev",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "build prod": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --omit=dev",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
